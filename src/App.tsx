@@ -1,13 +1,14 @@
 import React from "react";
 import axios from "axios";
-import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
+import { BrowserRouter as Routes, Route, Link, Switch, BrowserRouter } from "react-router-dom";
 import { Button, Divider, Header, Container } from "semantic-ui-react";
-
+import PatientInfo from "./patientPage/PatientInfo";
 import { apiBaseUrl } from "./constants";
 import { useStateValue } from "./state";
 import { Patient } from "./types";
 
 import PatientListPage from "./PatientListPage";
+// import { patient } from "../data/patients";
 
 const App = () => {
   const [, dispatch] = useStateValue();
@@ -29,7 +30,8 @@ const App = () => {
 
   return (
     <div className="App">
-      <Router>
+      <BrowserRouter>
+      <Routes>
         <Container>
           <Header as="h1">Patientor</Header>
           <Button as={Link} to="/" primary>
@@ -40,9 +42,14 @@ const App = () => {
             <Route path="/">
               <PatientListPage />
             </Route>
+            <Route path="/patients/:id">
+              <PatientInfo />
+            </Route>
           </Switch>
         </Container>
-      </Router>
+      </Routes>
+      </BrowserRouter>
+      
     </div>
   );
 };

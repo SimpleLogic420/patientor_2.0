@@ -1,4 +1,5 @@
 import {PublicPatientInfo,Gender} from "../src/types"
+// import { Entry } from "../src/types";
 
 const isString = (text: unknown): text is string => {
     return typeof text === 'string' || text instanceof String;
@@ -48,26 +49,36 @@ const isString = (text: unknown): text is string => {
     return occupation;
   };
 
+  // const parseEntries = (entries: any): Entry[] => {
+  //   if (!entries || !Array.isArray(entries)) {
+  //     throw new Error(`Incorrect or missing entries: ${entries}`);
+  //   }
+  //   return entries;
+  // };
 
 type Fields = { 
     id : unknown,
     name: unknown,
     dateOfBirth?: unknown,
     gender: unknown ,
-    occupation:unknown
+    occupation:unknown,
+    entries?:unknown
 };
 
-const toNewPatientEntry = ({id,name,dateOfBirth,gender,occupation } : Fields): PublicPatientInfo => {
+const toNewPatientEntry = ({id,name,dateOfBirth,gender,occupation} : Fields): PublicPatientInfo => {
 
   const newEntry: PublicPatientInfo = {
  id:parseId(id),
  name:parseName(name),
  dateOfBirth:parseDateOfBirth(dateOfBirth),
  gender:parseGender(gender),
- occupation:parseOccupation(occupation)
+ occupation:parseOccupation(occupation),
+ 
   };
 
   return newEntry;
 };
+
+
 
 export default toNewPatientEntry;

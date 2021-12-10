@@ -27,7 +27,8 @@
   "include": [
     "src",
     "data",
-    "server"
+    "server",
+    "patientPage"
     
   ]
 }
