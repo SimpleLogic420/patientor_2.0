@@ -27,6 +27,9 @@ securePatients.push(newPatient)
 res.send(securePatients);
 })
 app.get("/api/patients/:id",(req,res)=>{
+  for (let i =0 ; i<patient.length;i++){
+    patient[i].entries=[];
+  };
 const patientId = req.params.id
 const patientInfo=patient.filter((p)=> p.id === patientId)
 res.send(patientInfo);

@@ -21,7 +21,7 @@ export interface Patient {
   gender: string;
   ssn?: string;
   dateOfBirth?: string;
-  entries?: Entry[]
+  entries: Entry[]
 }
 export type PublicPatientInfo = Omit<Patient,'ssn' | 'entries' >;
 
