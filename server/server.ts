@@ -1,7 +1,7 @@
 import express from 'express';
 import cors from "cors";
-import diagnosis from "../data/diagnosis"
-import {securePatients,patient} from "../data/patients"
+import diagnosis from "../src/data/diagnosis"
+import {securePatients,patient} from "../src/data/patients"
 // import {PublicPatientInfo} from "../src/types"
 import toNewPatientEntry from './utils';
 const app = express();

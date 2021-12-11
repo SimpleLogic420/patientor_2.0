@@ -8,7 +8,7 @@ import AddPatientModal from "../AddPatientModal";
 import { Patient ,PublicPatientInfo} from "../types";
 import { apiBaseUrl } from "../constants";
 import HealthRatingBar from "../components/HealthRatingBar";
-import { useStateValue } from "../state";
+import { useStateValue, addPatient } from "../state";
 
 const PatientListPage = () => {
   const [{ patients }, dispatch] = useStateValue();
@@ -24,13 +24,6 @@ const PatientListPage = () => {
     setError(undefined);
   };
 
-//   const isNotUndefined=(patients: Patient | undefined)=>{
-//   if(patients===undefined){
-//     throw new Error("patients is undefined");
-//   }
-//   return patients;
-// };
-
  
   const submitNewPatient = async (values: PatientFormValues) => {
     try {
@@ -40,7 +33,7 @@ const PatientListPage = () => {
         values
       );
       
-      dispatch({ type: "ADD_PATIENT", payload: newPatient });
+      dispatch(addPatient(newPatient));
       closeModal();
     } catch (error:any) {
       console.error(error.response?.data || 'Unknown Error');
